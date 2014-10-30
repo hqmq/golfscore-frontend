@@ -3,3 +3,17 @@
 body {
   font-family: 'Oswald', sans-serif;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.recent-games {
+  width: 30%;
+  max-width: 400px;
+}
+.recent-games table {
+  width: 100%;
+}
