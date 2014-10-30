@@ -1,6 +1,7 @@
 /** @jsx React.DOM **/
 var React = require('react');
 var RecentGames = require('./recent_games');
+var AwesomestPlayers = require('./awesomest_players');
 
 var App = module.exports = React.createClass({
   getInitialState() {
@@ -15,6 +16,7 @@ var App = module.exports = React.createClass({
     return (
       <div className="container">
         <RecentGames></RecentGames>
+        <AwesomestPlayers></AwesomestPlayers>
       </div>
     );
   }

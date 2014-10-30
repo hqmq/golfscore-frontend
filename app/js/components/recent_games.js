@@ -23,7 +23,7 @@ var RecentGames = module.exports = React.createClass({
 
   render() {
     return (
-      <div className="recent-games">
+      <div className="recent-games panel">
         <h1>Recent Games</h1>
         <table>
           <tr>

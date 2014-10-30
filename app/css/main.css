@@ -10,10 +10,11 @@ body {
   justify-content: center;
 }
 
-.recent-games {
+.panel {
   width: 30%;
   max-width: 400px;
+  margin: 50px 50px 50px 50px;
 }
-.recent-games table {
+.panel table {
   width: 100%;
 }
