@@ -15,7 +15,7 @@ var RecentGames = module.exports = React.createClass({
       return (
         <tr>
           <td>{player.name}</td>
-          <td>{player.points}</td>
+          <td className="text-right">{player.points}</td>
         </tr>
       );
     });
@@ -28,7 +28,7 @@ var RecentGames = module.exports = React.createClass({
         <table>
           <tr>
             <th>Player</th>
-            <th>Awesomness</th>
+            <th className="text-right">Awesomeness</th>
           </tr>
           {this.renderPlayers()}
         </table>

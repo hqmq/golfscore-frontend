@@ -1,8 +1,15 @@
-/** @jsx React.DOM */
+/** @jsx React.DOM **/
 var React = require('react');
+var RecentGames = require('./recent_games');
+var AwesomestPlayers = require('./awesomest_players');
 
 var Home = module.exports = React.createClass({
   render() {
-    return <h2 className="Heading Heading--alt">Welcome!</h2>;
+    return (
+      <div className="container">
+        <RecentGames />
+        <AwesomestPlayers />
+      </div>
+    );
   }
 });

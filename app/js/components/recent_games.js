@@ -15,7 +15,7 @@ var RecentGames = module.exports = React.createClass({
       return (
         <tr>
           <td>{game.course}</td>
-          <td>{game.when}</td>
+          <td className="text-right">{game.when}</td>
         </tr>
       );
     });
@@ -28,7 +28,7 @@ var RecentGames = module.exports = React.createClass({
         <table>
           <tr>
             <th>Where</th>
-            <th>Time</th>
+            <th className="text-right">Time</th>
           </tr>
           {this.renderGames()}
         </table>

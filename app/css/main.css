@@ -12,6 +12,10 @@ h1 {
   font-size: 3em;
 }
 
+.text-right{
+  text-align: right;
+}
+
 .container {
   display: flex;
   flex-direction: row;
