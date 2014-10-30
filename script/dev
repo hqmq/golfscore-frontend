@@ -1,7 +1,7 @@
 #!/bin/sh
 ./script/build
-WATCHIFY="node_modules/.bin/watchify --detect-globals false"
-open http://localhost:8080
+WATCHIFY="node_modules/.bin/watchify"
+open http://localhost:8080/index.html
 $WATCHIFY -t envify -t reactify -x react ./app/js/main.js -o build/js/app.js &
 ./node_modules/.bin/http-server build
 kill %1

@@ -4,7 +4,7 @@
   "description": "a frontend for the golf-score-grapher project",
   "main": "index.js",
   "dependencies": {
-    "react": "0.12.0",
+    "react": "^0.12.0",
     "react-router": "^ 0.9.4"
   },
   "devDependencies": {
@@ -20,5 +20,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Michael Ries",
-  "license": "MIT"
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  }
 }
