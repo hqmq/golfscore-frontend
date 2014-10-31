@@ -1,5 +1,6 @@
 /** @jsx React.DOM **/
 var React = require('react');
+var Link = require('react-router').Link;
 
 var RecentGames = module.exports = React.createClass({
   getInitialState() {
@@ -14,7 +15,7 @@ var RecentGames = module.exports = React.createClass({
     return this.state.players.map(function(player){
       return (
         <tr>
-          <td>{player.name}</td>
+          <td><Link to="player" params={{id: player.id}}>{player.name}</Link></td>
           <td className="text-right">{player.points}</td>
         </tr>
       );

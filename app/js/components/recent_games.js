@@ -1,5 +1,6 @@
 /** @jsx React.DOM **/
 var React = require('react');
+var moment = require('moment');
 
 var RecentGames = module.exports = React.createClass({
   getInitialState() {
@@ -12,10 +13,11 @@ var RecentGames = module.exports = React.createClass({
 
   renderGames() {
     return this.state.games.map(function(game){
+      var mom = moment.unix(game.when);
       return (
         <tr>
           <td>{game.course}</td>
-          <td className="text-right">{game.when}</td>
+          <td className="text-right">{mom.format("ddd MMM Do YYYY")}</td>
         </tr>
       );
     });
