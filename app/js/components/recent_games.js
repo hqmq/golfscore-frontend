@@ -2,13 +2,23 @@
 var React = require('react');
 var moment = require('moment');
 
+var RecentGamesStore = require('../stores/recent_games');
+
 var RecentGames = module.exports = React.createClass({
   getInitialState() {
-    return {
-      games: [
-        {course: "Trafalga Orem Lighthouse", when: 1414645531, id: 1}
-      ]
-    };
+    return RecentGamesStore.getState();
+  },
+
+  componentWillMount() {
+    RecentGamesStore.addChangeListener(this.stateChanged);
+    RecentGamesStore.load();
+  },
+  componentWillUnmount() {
+    RecentGamesStore.removeChangeListener(this.stateChanged);
+  },
+
+  stateChanged() {
+    this.setState(RecentGamesStore.getState());
   },
 
   renderGames() {
