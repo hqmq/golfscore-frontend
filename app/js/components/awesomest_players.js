@@ -2,19 +2,28 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
-var RecentGames = module.exports = React.createClass({
+var Store = require('../stores/awesomest_players');
+
+var AwesomestPlayers = module.exports = React.createClass({
   getInitialState() {
-    return {
-      players: [
-        {name: "Mikey", id: 1, points: 65}
-      ]
-    };
+    return Store.getState();
+  },
+
+  componentWillMount() {
+    Store.addChangeListener(this.stateChanged);
+    Store.load();
+  },
+  componentWillUnmount() {
+    Store.removeChangeListener(this.stateChanged);
+  },
+  stateChanged() {
+    this.setState(Store.getState());
   },
 
   renderPlayers() {
     return this.state.players.map(function(player){
       return (
-        <tr>
+        <tr key={player.id}>
           <td><Link to="player" params={{id: player.id}}>{player.name}</Link></td>
           <td className="text-right">{player.points}</td>
         </tr>

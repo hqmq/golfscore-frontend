@@ -16,7 +16,6 @@ var RecentGames = module.exports = React.createClass({
   componentWillUnmount() {
     RecentGamesStore.removeChangeListener(this.stateChanged);
   },
-
   stateChanged() {
     this.setState(RecentGamesStore.getState());
   },
@@ -25,7 +24,7 @@ var RecentGames = module.exports = React.createClass({
     return this.state.games.map(function(game){
       var mom = moment.unix(game.when);
       return (
-        <tr>
+        <tr key={game.id}>
           <td>{game.course}</td>
           <td className="text-right">{mom.format("ddd MMM Do YYYY")}</td>
         </tr>
