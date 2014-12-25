@@ -24,7 +24,7 @@ var AwesomestPlayers = module.exports = React.createClass({
     return this.state.players.map(function(player){
       return (
         <tr key={player.id}>
-          <td><Link to="player" params={{id: player.id}}>{player.name}</Link></td>
+          <td><Link to="player" params={player}>{player.name}</Link></td>
           <td className="text-right">{player.points}</td>
         </tr>
       );
