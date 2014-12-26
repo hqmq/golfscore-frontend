@@ -19,6 +19,14 @@ h1 {
 .container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
@@ -29,4 +37,19 @@ h1 {
 }
 .panel table {
   width: 100%;
+}
+
+.player {
+  width: 70%;
+}
+.trophies {
+  width: 70%;
+}
+.trophies .trophy {
+  margin: 40px;
+  width: 225px;
+}
+.trophies .trophy p {
+  font-weight: bolder;
+  margin: 0.1em;
 }

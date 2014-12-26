@@ -1,6 +1,6 @@
 /** @jsx React.DOM **/
 var React = require('react');
-var Store = require('../stores/player');
+var Trophy = require('./trophy');
 var xhr = require('xhr');
 
 var Player = module.exports = React.createClass({
@@ -8,6 +8,8 @@ var Player = module.exports = React.createClass({
     return {
       id: null,
       name: null,
+      cumulative_score: null,
+      records: [],
     };
   },
   componentWillMount() {
@@ -21,10 +23,22 @@ var Player = module.exports = React.createClass({
 
   render() {
     return (
-      <div class="player">
-        <h1>Player {this.state.name}({this.state.id})</h1>
-        <h2>Is Awesome!</h2>
+      <div className="container-vertical">
+        <div className="player">
+          <h1>Player {this.state.name}</h1>
+          <h3>Cumulative Score: {this.state.cumulative_score}</h3>
+        </div>
+        <div className="trophies">
+          <div className="container">
+            {this.renderTrophies()}
+          </div>
+        </div>
       </div>
     );
+  },
+  renderTrophies() {
+    return this.state.records.map(function(rec){
+      return <Trophy key={rec.id} record={rec} />;
+    });
   }
 });
