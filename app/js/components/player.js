@@ -8,7 +8,7 @@ var Player = module.exports = React.createClass({
     return {
       id: null,
       name: null,
-      cumulative_score: null,
+      points: null,
       records: [],
     };
   },
@@ -26,7 +26,7 @@ var Player = module.exports = React.createClass({
       <div className="container-vertical">
         <div className="player">
           <h1>Player {this.state.name}</h1>
-          <h3>Cumulative Score: {this.state.cumulative_score}</h3>
+          <h3>Cumulative Score: {this.state.points}</h3>
         </div>
         <div className="trophies">
           <div className="container">

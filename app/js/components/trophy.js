@@ -1,4 +1,5 @@
 /** @jsx React.DOM **/
+var assets = require('../assets');
 var React = require('React');
 var moment = require('moment');
 
@@ -14,16 +15,20 @@ var Trophy = module.exports = React.createClass({
         return "2nd";
       case 3:
         return "3rd";
+      case 4:
+        return "4th";
+      case 5:
+        return "5th";
     }
   },
   pictureUrl() {
     switch(this.props.record.place) {
       case 1:
-        return "/images/trophy.gold.png";
+        return assets.urlFor("/images/trophy.gold.png");
       case 2:
-        return "/images/trophy.silver.png";
-      case 3:
-        return "/images/trophy.bronze.png";
+        return assets.urlFor("/images/trophy.silver.png");
+      default:
+        return assets.urlFor("/images/trophy.bronze.png");
     }
   },
 

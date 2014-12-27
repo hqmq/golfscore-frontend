@@ -22,7 +22,7 @@ var RecentGames = module.exports = React.createClass({
 
   renderGames() {
     return this.state.games.map(function(game){
-      var mom = moment.unix(game.when);
+      var mom = moment.unix(game.played_at);
       return (
         <tr key={game.id}>
           <td>{game.course}</td>
