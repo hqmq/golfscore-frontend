@@ -1,10 +1,10 @@
 #!/bin/sh
 export NODE_ENV="development"
-./script/build
-cp app/index.html build/index.html
-cp app/css/* build/css/
+./script/clean
+./script/build-assets
+./script/build-app
+
 WATCHIFY="node_modules/.bin/watchify"
-open http://localhost:8080/index.html
-$WATCHIFY -t envify -t reactify -x react ./app/js/main.js -o build/js/app.js &
+$WATCHIFY -t envify -t reactify ./app/js/main.js -o build/js/app.js &
 ./node_modules/.bin/http-server build
 kill %1

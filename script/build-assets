@@ -1,0 +1,4 @@
+#!/bin/sh
+cp app/index.html build/index.html
+cp app/css/* build/css/
+cp app/images/* build/images/
