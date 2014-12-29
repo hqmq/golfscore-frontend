@@ -3,7 +3,7 @@ var React = require('react');
 var Trophy = require('./trophy');
 var xhr = require('xhr');
 
-var Player = module.exports = React.createClass({
+var Player = React.createClass({
   getInitialState() {
     return {
       id: null,
@@ -42,3 +42,5 @@ var Player = module.exports = React.createClass({
     });
   }
 });
+
+module.exports = Player;

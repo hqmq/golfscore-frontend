@@ -4,7 +4,7 @@ var Link = require('react-router').Link;
 
 var Store = require('../stores/awesomest_players');
 
-var AwesomestPlayers = module.exports = React.createClass({
+var AwesomestPlayers = React.createClass({
   getInitialState() {
     return Store.getState();
   },
@@ -46,3 +46,5 @@ var AwesomestPlayers = module.exports = React.createClass({
     );
   }
 });
+
+module.exports = AwesomestPlayers;

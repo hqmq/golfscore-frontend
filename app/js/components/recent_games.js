@@ -5,7 +5,7 @@ var moment = require('moment');
 
 var RecentGamesStore = require('../stores/recent_games');
 
-var RecentGames = module.exports = React.createClass({
+var RecentGames = React.createClass({
   getInitialState() {
     return RecentGamesStore.getState();
   },
@@ -52,3 +52,5 @@ var RecentGames = module.exports = React.createClass({
     );
   }
 });
+
+module.exports = RecentGames;

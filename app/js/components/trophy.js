@@ -3,7 +3,7 @@ var assets = require('../assets');
 var React = require('React');
 var moment = require('moment');
 
-var Trophy = module.exports = React.createClass({
+var Trophy = React.createClass({
   played_at() {
     return moment.unix(this.props.record.played_at).format("MMM D, YYYY");
   },
@@ -42,3 +42,5 @@ var Trophy = module.exports = React.createClass({
     );
   }
 });
+
+module.exports = Trophy;
