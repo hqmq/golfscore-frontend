@@ -1,5 +1,6 @@
 /** @jsx React.DOM **/
 var React = require('react');
+var Link = require('react-router').Link;
 var moment = require('moment');
 
 var RecentGamesStore = require('../stores/recent_games');
@@ -26,7 +27,11 @@ var RecentGames = module.exports = React.createClass({
       return (
         <tr key={game.id}>
           <td>{game.course}</td>
-          <td className="text-right">{mom.format("ddd MMM Do YYYY")}</td>
+          <td className="text-right">
+            <Link to="game" params={game}>
+              {mom.format("ddd MMM Do YYYY")}
+            </Link>
+          </td>
         </tr>
       );
     });

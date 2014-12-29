@@ -53,3 +53,9 @@ h1 {
   font-weight: bolder;
   margin: 0.1em;
 }
+
+.score-table {
+  width: 100%;
+  max-width: 1000px;
+  text-align: left;
+}
