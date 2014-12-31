@@ -4,6 +4,7 @@ var moment = require('moment');
 var GoogleLineChart = require('./google_line_chart');
 var ScoreTable = require('./score_table');
 var xhr = require('xhr');
+var _ = require('underscore');
 
 var Game = React.createClass({
   getInitialState() {
@@ -28,14 +29,49 @@ var Game = React.createClass({
 
   render(){
     var mom = moment.unix(this.state.played_at);
-    var data = [["blank","jared cook","Mikey","russell","nate priego","ny","chris hopkins","par"],[1,0,-1,2,1,0,2,0],[2,-1,-1,2,1,0,3,0],[3,-2,-1,1,1,-1,4,0],[4,-2,0,0,1,0,3,0],[5,-3,0,1,2,1,2,0],[6,-3,0,0,2,2,1,0],[7,-3,1,0,2,2,1,0],[8,-3,1,0,2,2,1,0],[9,-2,-1,-1,3,2,0,0],[10,-2,-1,0,3,2,3,1],[11,-2,-1,0,3,2,3,2],[12,-1,-1,0,3,1,3,2],[13,-1,-3,0,1,1,3,1],[14,-3,-4,1,-1,2,5,1],[15,-4,-4,2,0,2,7,2],[16,-4,-4,1,1,3,6,2],[17,-5,-4,1,2,3,5,2],[18,-5,-4,1,2,3,5,2]];
-    return (
-      <div className="container-vertical">
-        <h2>{this.state.course} :: {mom.format("MMM D, YYYY @ h:mm a")}</h2>
-        <ScoreTable scores={this.state.scores} />
-        <GoogleLineChart data={data} height="500px" width="1100px" graphId="running_totals" />
-      </div>
-    );
+    if( this.state.course ) {
+      var graph_data = this.graphData();
+      return (
+        <div className="container-vertical">
+          <h2>{this.state.course} :: {mom.format("MMM D, YYYY @ h:mm a")}</h2>
+          <ScoreTable scores={this.state.scores} />
+          <GoogleLineChart data={graph_data} height="500px" width="1100px" graphId="running_totals" />
+        </div>
+      );
+    } else {
+      return <h3>...Loading Game...</h3>;
+    }
+  },
+
+  graphData() {
+    var scores = this.state.scores;
+    var num_scores = scores.length;
+    var num_holes = scores[0].holes.length;
+    var sum_holes = [];
+    for(var i = 0; i < num_holes; i++){ sum_holes.push(0); }
+    scores.forEach(function(score){
+      score.holes.forEach(function(hole,idx){
+        sum_holes[idx] = sum_holes[idx] + hole;
+      });
+    });
+
+    var avg_holes = sum_holes.map(function(sum){ return sum/num_scores; });
+    var total = 0;
+    var avg_running_total = avg_holes.map(function(hole){ total = total + hole; return total; });
+
+    scores.forEach(function(score){
+      var total = 0;
+      score.running_total = score.holes.map(function(hole){ total = total + hole; return total; });
+      score.averages = score.running_total.map(function(hole,idx){ return hole - avg_running_total[idx]; })
+    });
+    var x_axis = ["blank"];
+    for(var i = 1; i <= num_holes; i++){ x_axis.push(i); }
+    var matrix = [x_axis];
+    scores.forEach(function(score){
+      matrix.push( [score.name].concat(score.averages) );
+    });
+
+    return _.zip.apply(_,matrix);
   }
 });
 
