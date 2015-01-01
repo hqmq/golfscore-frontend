@@ -2,6 +2,7 @@
 export NODE_ENV="development"
 ./script/clean
 ./script/build-assets
+./script/build-index
 ./script/build-app
 
 WATCHIFY="node_modules/.bin/watchify"
