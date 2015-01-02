@@ -37,8 +37,19 @@ var Player = React.createClass({
     );
   },
   renderTrophies() {
-    return this.state.records.map(function(rec){
+    return this.sortedRecords().map(function(rec){
       return <Trophy key={rec.id} record={rec} />;
+    });
+  },
+  sortedRecords() {
+    return this.state.records.sort(function(a,b){
+      if(a.place == b.place) {
+        return 0;
+      } else if (a.place < b.place) {
+        return -1;
+      } else {
+        return 1;
+      }
     });
   }
 });

@@ -1,1 +1,1 @@
-scp -r -i ~/.ssh/hair.pem production_build/* ec2-user@riesd.com:/root/db/
+scp -r -i ~/.ssh/hair.pem production_build/* ec2-user@riesd.com:~/www/golf/

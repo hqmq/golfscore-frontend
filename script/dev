@@ -3,9 +3,8 @@ export NODE_ENV="development"
 ./script/clean
 ./script/build-assets
 ./script/build-index
-./script/build-app
 
 WATCHIFY="node_modules/.bin/watchify"
-$WATCHIFY -t envify -t reactify ./app/js/main.js -o build/js/app.js &
+$WATCHIFY -t envify -t reactify ./app/js/main.js -o development_build/js/app.js &
 ./node_modules/.bin/http-server development_build
 kill %1
