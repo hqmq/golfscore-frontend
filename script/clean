@@ -1,3 +1,4 @@
 #!/bin/sh
-rm -rf build
-mkdir -p build/images build/js build/css
+BUILD_DIR="${NODE_ENV}_build"
+rm -rf $BUILD_DIR
+mkdir -p $BUILD_DIR/images $BUILD_DIR/js $BUILD_DIR/css

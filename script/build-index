@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 var host = "localhost:8080";
+var build_dir = "development_build";
 if( process.env.NODE_ENV === "production") {
   host = "golf.riesd.com";
+  build_dir = "production_build";
 }
 
 fs = require('fs')
@@ -10,7 +12,7 @@ fs.readFile('app/index.html', 'utf8', function (err,data) {
     console.log(err);
     process.exit(1);
   }
-  fs.writeFile('build/index.html', data.replace(":host:",host), function(err){
+  fs.writeFile(build_dir + '/index.html', data.replace(/\:host\:/g,host), function(err){
     if (err) {
       console.log(err);
       process.exit(1);

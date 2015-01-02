@@ -7,5 +7,5 @@ export NODE_ENV="development"
 
 WATCHIFY="node_modules/.bin/watchify"
 $WATCHIFY -t envify -t reactify ./app/js/main.js -o build/js/app.js &
-./node_modules/.bin/http-server build
+./node_modules/.bin/http-server development_build
 kill %1

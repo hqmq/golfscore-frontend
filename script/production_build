@@ -1,0 +1,6 @@
+#!/bin/sh
+export NODE_ENV="production"
+./script/clean
+./script/build-assets
+./script/build-index
+./script/build-app

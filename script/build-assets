@@ -1,3 +1,4 @@
 #!/bin/sh
-cp app/css/* build/css/
-cp app/images/* build/images/
+BUILD_DIR="${NODE_ENV}_build"
+cp app/css/* $BUILD_DIR/css/
+cp app/images/* $BUILD_DIR/images/
