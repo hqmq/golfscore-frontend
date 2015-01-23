@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var host = "localhost:8080";
+var host = "golf.dev:8080";
 var build_dir = "development_build";
 if( process.env.NODE_ENV === "production") {
   host = "golf.riesd.com";

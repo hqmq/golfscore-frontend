@@ -3,7 +3,7 @@ module.exports = {
     if (process.env.NODE_ENV === "production") {
       return "//golf.riesd.com"+path;
     } else {
-      return "//localhost:8080"+path;
+      return "//golf.dev:8080"+path;
     }
   }
 }
