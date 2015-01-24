@@ -23,6 +23,9 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
 }
+.container.left {
+  align-items: left;
+}
 .container-vertical {
   display: flex;
   flex-direction: column;

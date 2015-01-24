@@ -23,7 +23,7 @@ var GoogleLineChart = React.createClass({
   drawCharts(){
     var data = google.visualization.arrayToDataTable(this.props.data);
     var options = {
-      title: 'Running Totals vs Average'
+      title: this.props.title
     };
     var node = document.getElementById(this.props.graphId);
     var chart = new google.visualization.LineChart(node);

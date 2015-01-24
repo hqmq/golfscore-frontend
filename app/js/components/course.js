@@ -23,10 +23,27 @@ var Course = React.createClass({
   render(){
     if( this.state.id ) {
       return (
+      <div>
+        <div className="container left">
+          <h1>{this.state.name}</h1>
+        </div>
         <div className="container">
-          <div className="course panel">
-            <h1>{this.state.name}</h1>
-            <h3>Games Played: {this.state.number_of_games_played}</h3>
+          <GoogleLineChart data={this.graphData()}
+                           height="300px"
+                           width="1100px"
+                           title="Course Par"
+                           graphId="course_par" />
+        </div>
+        <div className="container">
+          <div className="records panel">
+            <table>
+              <tr>
+                <th>Rank</th>
+                <th>Score</th>
+                <th>Date</th>
+              </tr>
+              {this.renderRecords()}
+            </table>
           </div>
           <div className="recent-games panel">
             <table>
@@ -35,6 +52,7 @@ var Course = React.createClass({
             </table>
           </div>
         </div>
+      </div>
       );
     } else {
       return <h3>...Loading Course...</h3>;
@@ -51,6 +69,28 @@ var Course = React.createClass({
       );
     });
   },
+
+  renderRecords() {
+    return this.state.records.map(function(record){
+      var mom = moment.unix(record.played_at);
+      var game = {id: record.game_id};
+      return (
+        <tr key={record.id}>
+          <td>{record.place}</td>
+          <td>{record.total}</td>
+          <td>
+            {mom.format("ddd MMM Do YYYY")}
+          </td>
+        </tr>
+      );
+    });
+  },
+
+  graphData() {
+    var data = this.state.par.map(function(val, idx){ return [idx + 1, val]; });
+    data.unshift(["blank","par"]);
+    return data;
+  }
 });
 
 module.exports = Course;

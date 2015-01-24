@@ -35,7 +35,11 @@ var Game = React.createClass({
         <div className="container-vertical">
           <h2>{this.state.course} :: {mom.format("MMM D, YYYY @ h:mm a")}</h2>
           <ScoreTable scores={this.state.scores} />
-          <GoogleLineChart data={graph_data} height="500px" width="1100px" graphId="running_totals" />
+          <GoogleLineChart data={graph_data}
+                           height="500px"
+                           width="1100px"
+                           title="Running Totals vs Average"
+                           graphId="running_totals" />
         </div>
       );
     } else {
