@@ -1,6 +1,7 @@
 /** @jsx React.DOM **/
 var assets = require('../assets');
 var React = require('React');
+var Link = require('react-router').Link;
 var moment = require('moment');
 
 var Trophy = React.createClass({
@@ -36,7 +37,12 @@ var Trophy = React.createClass({
     return (
       <div className="trophy">
         <img src={this.pictureUrl()} />
-        <p>{this.ordinal()} - {this.props.record.course}</p>
+        <p>
+          {this.ordinal()} -
+          <Link to="course" params={{id: this.props.record.course_id}}>
+            {this.props.record.course}
+          </Link>
+        </p>
         <p>{this.played_at()}</p>
       </div>
     );

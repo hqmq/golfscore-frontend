@@ -39,6 +39,7 @@ var Course = React.createClass({
             <table>
               <tr>
                 <th>Rank</th>
+                <th>Player</th>
                 <th>Score</th>
                 <th>Date</th>
               </tr>
@@ -73,13 +74,17 @@ var Course = React.createClass({
   renderRecords() {
     return this.state.records.map(function(record){
       var mom = moment.unix(record.played_at);
-      var game = {id: record.game_id};
       return (
         <tr key={record.id}>
           <td>{record.place}</td>
+          <td>
+            <Link to="player" params={{id: record.player_id}}>{record.player}</Link>
+          </td>
           <td>{record.total}</td>
           <td>
-            {mom.format("ddd MMM Do YYYY")}
+            <Link to="game" params={{id: record.game_id}}>
+              {mom.format("ddd MMM Do YYYY")}
+            </Link>
           </td>
         </tr>
       );

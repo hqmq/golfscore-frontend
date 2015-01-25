@@ -26,7 +26,11 @@ var RecentGames = React.createClass({
       var mom = moment.unix(game.played_at);
       return (
         <tr key={game.id}>
-          <td>{game.course}</td>
+          <td>
+            <Link to="course" params={{id: game.course_id}}>
+              {game.course}
+            </Link>
+          </td>
           <td className="text-right">
             <Link to="game" params={game}>
               {mom.format("ddd MMM Do YYYY")}
